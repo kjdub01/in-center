@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-
-end 
+  has_many :games
+  has_many :teams, through: :games
+end
