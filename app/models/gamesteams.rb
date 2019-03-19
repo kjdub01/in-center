@@ -1,2 +1,2 @@
-class TeamsGames < ApplicationRecord
+class GamesTeams < ApplicationRecord
 end
