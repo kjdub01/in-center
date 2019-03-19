@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_03_18_024944) do
     t.string "city"
     t.string "state"
     t.string "zipcode"
+    t.string "email"
+    t.string "password_digest"
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

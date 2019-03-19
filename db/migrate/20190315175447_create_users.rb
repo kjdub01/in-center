@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :city
       t.string :state
       t.string :zipcode
+      t.string :email
+      t.string :password_digest
       t.boolean :admin, default: false
 
       t.timestamps
