@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_024944) do
   create_table "teams", force: :cascade do |t|
     t.string "team_name"
     t.string "contact_name"
-    t.string "contact_number"
+    t.string "contact_phone"
     t.string "address1"
     t.string "address2"
     t.string "city"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_024944) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "number"
+    t.string "phone"
     t.string "address1"
     t.string "address2"
     t.string "city"
