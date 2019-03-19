@@ -1,0 +1,2 @@
+class TeamsGames < ApplicationRecord
+end

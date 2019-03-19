@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :address2
       t.string :city
       t.string :state
-      t.stirng :zipcode
+      t.string :zipcode
       t.boolean :admin, default: false
 
       t.timestamps
