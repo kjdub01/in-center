@@ -10,6 +10,26 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="banner">
+    </div>
+
+    <div id="username">
+    </div>
+
+    <!-- menu -->
+    <div id="menudiv" class="menudiv">
+      <ul>
+        <li>home</li>
+        <li>Referees</li>
+        <li>games</li>
+        <li>teams</li>
+        <li>logout</li>
+      </ul>
+    </div>
+
+    <!-- content -->
+    <div id="maincontent" class="contentarea">
+      <%= yield %>
+    </div>
   </body>
 </html>
