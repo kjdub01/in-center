@@ -10,26 +10,29 @@
   </head>
 
   <body>
-    <div id="banner">
-    </div>
+    <div id="container" class="container">
+      <div id="banner">
+      </div>
 
-    <div id="username">
-    </div>
+      <div id="userName" class="username noprint">
+        <p></p>
+      </div>
 
-    <!-- menu -->
-    <div id="menudiv" class="menudiv">
-      <ul>
-        <li>home</li>
-        <li>Referees</li>
-        <li>games</li>
-        <li>teams</li>
-        <li>logout</li>
-      </ul>
-    </div>
+      <!-- menu -->
+      <div id="menudiv" class="menudiv">
+        <ul>
+          <li>home</li>
+          <li>Referees</li>
+          <li>games</li>
+          <li>teams</li>
+          <li>logout</li>
+        </ul>
+      </div>
 
-    <!-- content -->
-    <div id="maincontent" class="contentarea">
-      <%= yield %>
-    </div>
+      <!-- content -->
+      <div id="maincontent" class="contentarea">
+        <%= yield %>
+      </div>
+    </div> <!-- end container -->
   </body>
 </html>
