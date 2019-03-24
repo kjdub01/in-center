@@ -1,0 +1,35 @@
+<%= form_for(@user, url: new_user_path) do |f| %>
+  <div id="maincontent">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+
+    <%= f.label :address1 %>
+    <%= f.text_field :address1 %>
+
+    <%= f.label :address2 %>
+    <%= f.text_field :address2 %>
+
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+
+    <%= f.label :zipcode %>
+    <%= f.text_field :zipcode %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :admin %>
+    <%= f.check_box :admin %>
+
+    <%= f.submit %>
+  </div>
+<% end %>
