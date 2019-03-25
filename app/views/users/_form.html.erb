@@ -1,36 +1,38 @@
+<%= form_for(@user) do |f| %>
   <div id="maincontent">
 
     <%= render 'shared/error_messages' %>
-    
-    <label>Name</label>
-    <%= text_field_tag :name %><br>
 
-    <label>Phone</label>
-    <%= text_field_tag :phone %><br>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %><br>
 
-    <label>Address 1</label>
-    <%= text_field_tag :address1 %><br>
+    <%= f.label :phone %>
+    <%= f.text_field :phone, class: "form-control" %><br>
 
-    <label>Address 2</label>
-    <%= text_field_tag :address2 %><br>
+    <%= f.label :address1 %>
+    <%= f.text_field :address1, class: "form-control" %><br>
 
-    <label>City</label>
-    <%= text_field_tag :city %><br>
+    <%= f.label :address2 %>
+    <%= f.text_field :address2, class: "form-control" %><br>
 
-    <label>State</label>
-    <%= text_field_tag :state %><br>
+    <%= f.label :city %>
+    <%= f.text_field :city, class: "form-control" %><br>
 
-    <label>Zipcode</label>
-    <%= text_field_tag :zipcode %><br>
+    <%= f.label :state %>
+    <%= f.text_field :state, class: "form-control" %><br>
 
-    <label>Email</label>
-    <%= text_field_tag :email %><br>
+    <%= f.label :zipcode %>
+    <%= f.text_field :zipcode, class: "form-control" %><br>
 
-    <label>Password</label>
-    <%= password_field_tag :password %><br>
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "form-control" %><br>
 
-    <label>Are you an admin?</label>
-    <%= check_box_tag :admin %><br>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control" %><br>
 
-    <%= submit_tag "Create" %>
+    <%= f.label :admin %>
+    <%= f.check_box :admin, class: "form-control" %><br>
+
+    <%= f.submit class: "btn btn-primary" %>
   </div>
+<% end %>

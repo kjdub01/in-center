@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
       redirect_to user_path(@user)
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -29,6 +29,7 @@ class UsersController < ApplicationController
       :email,
       :password,
       :admin
-     )
+    )
   end
+
 end
