@@ -12,9 +12,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless logged_in?
   end
 
-  def curent_user
-    @curent_user ||= user.find(session[:user_id]) if session[:user_id]
+  def current_user
+    @current_user ||= user.find(session[:user_id]) if session[:user_id]
   end
-
-  helper_method :curent_user
+  helper_method :current_user
 end
