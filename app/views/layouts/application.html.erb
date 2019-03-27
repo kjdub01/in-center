@@ -13,26 +13,29 @@
     <div id="container" class="container">
       <div id="banner">
       </div>
-
       <div id="userName" class="username noprint">
         <p></p>
       </div>
-
       <!-- menu -->
       <div id="menudiv" class="menudiv">
-        <ul>
-          <li>home</li>
-          <li>Referees</li>
-          <li>games</li>
-          <li>teams</li>
-          <li>logout</li>
-        </ul>
-      </div>
-
+        <ul class="nav navbar-nav">
+          <% if current_user %>
+            <li><%= link_to "Hello, #{@current_user.name}", user_path(current_user) %></li>
+            <li>Referees</li>
+            <li>Games</li>
+            <li>Teams</li>
+            <li><%= link_to "Logout", logout_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Login", login_path %><li>
+            <li><%= link_to "Sign Up", new_user_path %></li>
+          <% end %>
+        </ul> <!-- end navbar-nav -->
+      </div> <!-- end menudiv -->
       <!-- content -->
       <div id="maincontent" class="contentarea">
         <%= yield %>
-      </div>
-    </div> <!-- end container -->
+      </div> <!-- end contentarea-->
+    </div> <!-- end container-->
   </body>
 </html>
