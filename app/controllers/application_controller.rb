@@ -3,12 +3,12 @@ class ApplicationController < ActionController::Base
   before_action :require_login, except: [:new, :create, :home]
 
   def logged_in?
-    !!curent_user
+    !!current_user
   end
 
   private
 
-  def required_login
+  def require_login
     redirect_to root_path unless logged_in?
   end
 
