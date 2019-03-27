@@ -1,3 +1,16 @@
 <h1>Sessions#new</h1>
 <p>Find me in app/views/sessions/new.html.erb</p>
+<%= form_tag(login_path) do %>
+
+  <label>Email</label>
+  <%= text_field_tag :email %>
+
+  <label>Password</label>
+  <%= password_field_tag :passowrd %>
+
+  <%= submit_tag("Login") %>
+<% end %>
+
+
+
 <%= link_to('Log in with Facebook!', '/auth/facebook') %>
