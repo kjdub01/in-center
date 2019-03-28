@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create'
-  resources :users do
+  resources :users
+  resources :games do
+    resources :teams, only: [:show, :index]
+  end
+  resources :teams do
     resources :games, only: [:show, :index]
   end
-  resources :games
-  resources :teams
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
