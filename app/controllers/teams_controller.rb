@@ -1,11 +1,11 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     if params[:game_id]
       @game = Game.find_by(id: params[:game_id])
       if @game.nil
-        redirect_to games_path, alert: "Game not found"
+        redirect_to games_path
       else
         @teams = @games.teams
       end
@@ -19,7 +19,7 @@ class TeamsController < ApplicationController
       @game = Game.find_by(id: params[:team_id])
       @team = @game.teams.find_by(id: params[:id])
       if @game.nil
-        redirect_to game_teams_path(@game) alert: "Game not found"
+        redirect_to game_teams_path(@game)
       end
     else
       @games = Game.find(params[:id])
@@ -27,6 +27,7 @@ class TeamsController < ApplicationController
   end
 
   def new
+    @team = Team.new
   end
 
   def create
@@ -36,11 +37,11 @@ class TeamsController < ApplicationController
         format.html {redirect_to @team, notice: "The team was successfully created"}
       else
         format.html {render :new}
+      end
     end
   end
 
   def edit
-
   end
 
   def update
