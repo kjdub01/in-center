@@ -1,25 +1,28 @@
 <%= form_for @team do |f|%>
-  <%= f.label :team_name %>
-  <%= f.team_name %>
 
-  <%= f.label :contact_name %>
-  <%= f.contact_name %>
+  <%= f.label :team_name %><br>
+  <%= f.text_field :team_name %><br>
 
-  <%= f.label :contact_phone %>
-  <%= f.contact_phone %>
+  <%= f.label :contact_name %><br>
+  <%= f.text_field :contact_name %><br>
 
-  <%= f.label :address1 %>
-  <%= f.address1 %>
+  <%= f.label :contact_phone %><br>
+  <%= f.text_field :contact_phone %><br>
 
-  <%= f.label :address2 %>
-  <%= f.address2 %>
+  <%= f.label :address1 %><br>
+  <%= f.text_field :address1 %><br>
 
-  <%= f.label :city %>
-  <%= f.city %>
+  <%= f.label :address2 %><br>
+  <%= f.text_field :address2 %><br>
 
-  <%= f.label :state %>
-  <%= f.state %>
+  <%= f.label :city %><br>
+  <%= f.text_field :city %><br>
 
-  <%= f.label :zipcode %>
-  <%= f.zipcode %>
+  <%= f.label :state %><br>
+  <%= f.text_field :state %><br>
+
+  <%= f.label :zipcode %><br>
+  <%= f.text_field :zipcode %><br>
+
+  <%= submit_tag ("Create Team") %>
 <% end %>
