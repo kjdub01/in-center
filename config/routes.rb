@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create'
   resources :users
-  resources :games do
-    resources :teams, only: [:show, :index]
-  end
+  resources :games
   resources :teams do
     resources :games, only: [:show, :index]
   end
