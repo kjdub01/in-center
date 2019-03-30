@@ -31,14 +31,8 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new(team_params)
-    respond_to do |format|
-      if @team.save
-        format.html {redirect_to @team, notice: "The team was successfully created"}
-      else
-        format.html {render :new}
-      end
-    end
+    @team = Team.create(team_params)
+    binding.pry
   end
 
   def edit
