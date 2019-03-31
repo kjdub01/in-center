@@ -15,15 +15,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    if params[:teams_id]
-      @game = Game.find_by(id: params[:team_id])
-      @team = @game.teams.find_by(id: params[:id])
-      if @game.nil
-        redirect_to game_teams_path(@game)
-      end
-    else
-      @games = Game.find(params[:id])
-    end
+    @team = Team.find(params[:id])
   end
 
   def new
@@ -31,8 +23,12 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.create(team_params)
-    binding.pry
+    @team = Team.new(team_params)
+    if @team.save
+      redirect_to team_path(@team)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -53,7 +49,8 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(
       :team_name,
-      :team_contact,
+      :contact_name,
+      :contact_phone,
       :address1,
       :address2,
       :city,
