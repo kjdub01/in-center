@@ -1,6 +1,6 @@
 class Team < ApplicationRecord
-  has_many :teamgames
-  has_many :games, through: :gamesteams
+  has_many :games_team
+  has_many :games, through: :games_team
 
   validates :team_name, presence: true
   validates :contact_name, presence: true
