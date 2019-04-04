@@ -1,9 +1,7 @@
 
 <ul>
-  <%= @game.teams.each do |team| %>
-    <li><%= team.team_name %></li>
-  <% end %>
-  <li><%= "3:00" %></li>
+  <li><%= @home_team.team_name %></li>
+  <li><%= @away_team.team_name %></li>
+  <li><%= @game.starts_at %></li>
   <li><%= @game.user.name %></li>
-
 </ul>
