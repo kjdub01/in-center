@@ -90,6 +90,19 @@ p {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   text-align: justify;
+  font-weight: normal;
   font-size: medium;
-  font-family: Calibri, arial, sans-serif;
+  font-family: calibri, arial, sans-serif;
+}
+
+hr {
+  display: block;
+  unicode-bidi: isolate;
+  margin-block-start: 0.5em;
+  margin-bloack-end: 0.5em;
+  margin-inline-start: auto;
+  marging-inline-end: auto;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 1px;
 }
