@@ -1,5 +1,6 @@
 class Team < ApplicationRecord
   has_many :games_team
+  accepts_nested_attributes_for :games_team
   has_many :games, through: :games_team
 
   validates :team_name, presence: true
