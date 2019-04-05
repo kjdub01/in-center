@@ -1,38 +1,64 @@
 <%= form_for(@user) do |f| %>
-  <div id="maincontent">
+  <%= render 'shared/error_messages' %>
+  <div class="signup">
+    <div class="signup-header">
+      <p>Sign Up</p>
+    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td><%= f.label :name %></td>
+          <td><%= f.text_field :name, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :phone %></td>
+          <td><%= f.text_field :phone, class: "form-control" %></td>
+        </tr>
 
-    <%= render 'shared/error_messages' %>
+        <tr>
+          <td><%= f.label :address1 %></td>
+          <td><%= f.text_field :address1, class: "form-control" %></td>
+        </tr>
 
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %><br>
+        <tr>
+          <td><%= f.label :address2 %></td>
+          <td><%= f.text_field :address2, class: "form-control" %></td>
+        </tr>
 
-    <%= f.label :phone %>
-    <%= f.text_field :phone, class: "form-control" %><br>
+        <tr>
+          <td><%= f.label :city %></td>
+          <td><%= f.text_field :city, class: "form-control" %></td>
+        </tr>
 
-    <%= f.label :address1 %>
-    <%= f.text_field :address1, class: "form-control" %><br>
+        <tr>
+          <td><%= f.label :state %></td>
+          <td><%= f.text_field :state, class: "form-control" %></td>
+        </tr>
 
-    <%= f.label :address2 %>
-    <%= f.text_field :address2, class: "form-control" %><br>
+        <tr>
+          <td><%= f.label :zipcode %></td>
+          <td><%= f.text_field :zipcode, class: "form-control" %></td>
+        </tr>
 
-    <%= f.label :city %>
-    <%= f.text_field :city, class: "form-control" %><br>
+        <tr>
+          <td><%= f.label :email %></td>
+          <td><%= f.text_field :email, class: "form-control" %></td>
+        </tr>
 
-    <%= f.label :state %>
-    <%= f.text_field :state, class: "form-control" %><br>
+        <tr>
+          <td><%= f.label :password %></td>
+          <td><%= f.password_field :password, class: "form-control" %></td>
+        </tr>
 
-    <%= f.label :zipcode %>
-    <%= f.text_field :zipcode, class: "form-control" %><br>
+        <tr>
+          <td><%= f.label :admin %></td>
+          <td><%= f.check_box :admin, class: "form-control" %></td>
+        </tr>
 
-    <%= f.label :email %>
-    <%= f.text_field :email, class: "form-control" %><br>
-
-    <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control" %><br>
-
-    <%= f.label :admin %>
-    <%= f.check_box :admin, class: "form-control" %><br>
-
-    <%= f.submit class: "btn btn-primary" %>
+        <tr>
+          <td><%= f.submit class: "btn btn-primary" %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 <% end %>
