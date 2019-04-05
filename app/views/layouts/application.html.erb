@@ -14,16 +14,18 @@
       <div id="banner">
       </div>
       <div id="userName" class="username noprint">
-        <p></p>
+        <% if current_user %>
+          <p><%= link_to "#{current_user.name}", user_path(current_user) %></p>
+        <% end %>
       </div>
       <!-- menu -->
       <div id="menudiv" class="menudiv">
         <ul class="nav navbar-nav">
           <% if current_user %>
-            <li><%= link_to "Hello, #{@current_user.name}", user_path(current_user) %></li>
-            <li>Referees</li>
-            <li>Games</li>
-            <li>Teams</li>
+            <li><%= link_to "Home", user_path(current_user) %></li>
+            <li><%= link_to "Referees", users_path %></li>
+            <li><%= link_to "Games", games_path %></li>
+            <li><%= link_to "Teams", teams_path %></li>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "Home", root_path %></li>
