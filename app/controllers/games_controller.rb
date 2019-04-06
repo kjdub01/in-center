@@ -5,8 +5,8 @@ class GamesController < ApplicationController
   end
 
   def show
-    @home_team = @game.teams[0]
-    @away_team = @game.teams[1]
+    @home_team = @game.home_team
+    @away_team = @game.away_team
   end
 
   def new
