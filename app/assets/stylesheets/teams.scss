@@ -19,6 +19,61 @@ td {
 }
 
 .teamheader {
+  display: inline-block;
+  min-width: 600px;
+}
+
+#tab_div_team {
+  float: left;
+  border-left: 1px ridge gray;
+  border-right: none;
+  border-top: none;
+  padding: 6px;
+  padding-bottom: 0px;
+  margin-left: 0px;
+  background-color: #333435;
+}
+
+#tab_div_team span {
+  font-size: small;
+  font-family: calibri, arial, sans-serif;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+#tab_div_team a {
+  text-decoration: none;
+  font-family: calibri, arial, sans-serif;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+#tab_div_games {
+  float: left;
+  border-left: 1px ridge gray;
+  border-right: none;
+  border-top: none;
+  padding: 6px;
+  padding-bottom: 0px;
+  margin-left: 0px;
+  background-color: #cfd0d1;
+}
+
+#tab_div_games span {
+  font-size: small;
+  font-family: calibri, arial, sans-serif;
+  font-weight: bold;
+  color: #333333;
+}
+
+#tab_div_games a {
+  text-decoration: none;
+  font-family: calibri, arial, sans-serif;
+  font-weight: bold;
+  color: #333333;
+}
+
+.teamname {
   clear: both;
   border-left: 1px ridge gray;
   border-right: 1px ridge gray;
@@ -65,6 +120,6 @@ td.viewdata {
   color: #000099;
 }
 
-.teamheader p {
+.teamname p {
   color: #FFFFFF;
 }
