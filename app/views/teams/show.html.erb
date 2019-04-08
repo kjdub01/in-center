@@ -1,10 +1,31 @@
-<ul>
-  <li><%= @team.team_name %></li>
-  <li><%= @team.contact_name %></li>
-  <li><%= @team.contact_phone %></li>
-  <li><%= @team.address1 %></li>
-  <li><%= @team.address2 %></li>
-  <li><%= @team.city %></li>
-  <li><%= @team.state %></li>
-  <li><%= @team.zipcode %></li>
-</ul>
+<table>
+  <tbody>
+    <tr>
+      <td colspan="100">
+        <div class="teamheader">
+          <p><%= @team.team_name %></p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td id="data_area" >
+        <table>
+          <tbody>
+            <tr>
+              <td class="viewtitle">Contact Name: </td>
+              <td class="viewdata"><%= @team.contact_name %></td>
+            </tr>
+            <tr>
+              <td class="viewtitle">Phone: </td>
+              <td class="viewdata"><%= @team.contact_phone %></td>
+            </tr>
+            <tr>
+              <td class="viewtitle">Address: </td>
+              <td class="viewdata"><%= @team.address1 %><br><%= @team.address2 %><br><%= @team.city %>, <%= @team.state %> <%= @team.zipcode %></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>

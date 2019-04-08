@@ -1,3 +1,75 @@
 // Place all the styles related to the teams controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div table {
+  min-width: 600px;
+  border-bottom: 8px solid gray;
+}
+
+table {
+  border-collapse: collapse;
+  padding: 0px;
+  border: 0px;
+}
+
+div table table {
+  border-bottom: none;
+}
+
+td {
+  vertical-align: top;
+  padding: 0px;
+  border: 0px;
+}
+
+.teamheader {
+  clear: both;
+  border-left: 1px ridge gray;
+  border-right: 1px ridge gray;
+  padding: 6px;
+  background-color: #333435;
+}
+
+p {
+  font-weight: bold;
+  font-family: calibri, arial, sans-serif;
+  font-size: medium;
+  text-align: justify;
+  margin-top: 0px;
+  margin-bottom: 0.5em;
+}
+
+td.viewtitle {
+  vertical-align: top;
+  text-align: left;
+  margin-top: 0px;
+  margin-bottom: 0.5em;
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 8px;
+  font-family: calibri, arial, sans-serif;
+  font-size: medium;
+  font-weight: bold;
+  border: 1px solid #FFFFFF;
+}
+
+td.viewdata {
+  position: relative;
+  left: -135px;
+  vertical-align: bottom;
+  text-align: justify;
+  padding: 0.5em;
+  font-family: calibri, arial, sans-serif;
+  font-size: medium;
+  font-weight: normal;
+  margin-top: 0px;
+  margin-bottom: 0.5em;
+  padding-left: 0.5em;
+  border: none;
+  color: #000099;
+}
+
+.teamheader p {
+  color: #FFFFFF;
+}
