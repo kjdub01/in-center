@@ -1,7 +1,11 @@
 class GamesController < ApplicationController
   before_action :set_game, only:[:show, :edit, :update]
   def index
-    @games = Game.all
+    if params[:team_id]
+      @games = Team.find(params[:team_id]).games
+    else
+      @games = Game.all
+    end
   end
 
   def show
