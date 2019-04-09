@@ -1,2 +1,40 @@
 
-Hello <%= current_user.name %>
+<table>
+  <tbody>
+    <tr>
+      <td colspan="100">
+        <div class="userheader">
+          <div id="tab_div_user">
+            <span><%= link_to "Referee", user_path(@user) %></span>
+          </div>
+          <div id="tab_div_games">
+            <span><%= link_to "Games", user_games_path(@user) %></span>
+          </div>
+          <div class="Username">
+            <p><%= @user.name %></p>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td id="data_area">
+        <table>
+          <tbody>
+            <tr>
+              <td class="viewtitle">Phone:</td>
+              <td class="userdata"><%= @user.phone %></td>
+            </tr>
+            <tr>
+              <td class="viewtitle">Email:</td>
+              <td class="userdata"><%= @user.email %></td>
+            </tr>
+            <tr>
+              <td class="viewtitle">Address:</td>
+              <td class="userdata"><%= @user.address1 %><br><%= @user.address2 %><br><%= @user.city %>, <%= @user.state %> <%= @user.zipcode %></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
