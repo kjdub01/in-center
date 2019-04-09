@@ -6,7 +6,7 @@ class GamesController < ApplicationController
 
     elsif params[:user_id]
       @games = User.find(params[:user_id]).games
-      
+
     else
       @games = Game.all
     end
@@ -24,7 +24,6 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-
     if @game.save
       redirect_to game_path(@game)
     else
@@ -39,7 +38,7 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:user_id, :starts_at, games_team_attributes:[:id, :game_id, :team_id, :home_team])
+    params.require(:game).permit(:user_id, :starts_at, :date, games_team_attributes:[:id, :game_id, :team_id, :home_team])
   end
 
 
