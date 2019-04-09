@@ -1,5 +1,16 @@
-<ul>
-  <% @teams.each do |team| %>
-    <li><%= team.team_name %></li>
-  <% end %>
-</ul>
+<table>
+  <tbody>
+    <tr>
+      <td class="tableheader">Team</td>
+      <td class="tableheader">Contact</td>
+      <td class="tableheader">Phone</td>
+    </tr>
+    <% @teams.each do |team| %>
+    <tr>
+      <td class="listview"><%= link_to "#{team.team_name}", team_path(team) %></td>
+      <td class="listview"><%= team.contact_name %></td>
+      <td class="listview"><%= team.contact_phone %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
