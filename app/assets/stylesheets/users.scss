@@ -30,3 +30,65 @@ td {
   text-align: left;
   font-family: calibri;
 }
+
+#tab_div_user {
+  float: left;
+  border-left: 1px ridge gray;
+  border-right: none;
+  border-top: none;
+  padding: 6px;
+  padding-bottom: 0px;
+  margin-left: 0px;
+  background-color: #333435;
+}
+
+#tab_div_user span {
+  font-size: small;
+  font-family: calibri, arial, sans-serif;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+#tab_div_user a {
+  text-decoration: none;
+  font-family: calibri, arial, sans-serif;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.Username {
+  clear: both;
+  border-left: 1px ridge gray;
+  border-right: 1px ridge gray;
+  padding: 6px;
+  background-color: #333435;
+}
+
+p {
+  font-weight: bold;
+  font-family: calibri, arial, sans-serif;
+  font-size: medium;
+  text-align: justify;
+  margin-top: 0px;
+  margin-bottom: 0.5em;
+}
+
+.Username p {
+  color: #FFFFFF;
+}
+
+.userdata {
+  position: relative;
+  left: -105px;
+  vertical-align: bottom;
+  text-align: justify;
+  padding: 0.5em;
+  font-family: calibri, arial, sans-serif;
+  font-size: medium;
+  font-weight: normal;
+  margin-top: 0px;
+  margin-bottom: 0.5em;
+  padding-left: 0.5em;
+  border: none;
+  color: #000099;
+}
