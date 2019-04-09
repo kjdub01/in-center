@@ -53,7 +53,7 @@ Specs:
       home_team custom
 
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-
+    User/most-games
 
 - [x] Include signup (how e.g. Devise)
     yes
@@ -72,4 +72,8 @@ Confirm:
 - [x] Limited logic in controllers
 - [ ] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
-  "_form.html.erb"
+
+
+- Game, Team create edit destroy
+- User admin, edit destroy
+- striff time date
