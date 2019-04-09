@@ -1,0 +1,16 @@
+<table>
+  <tbody>
+    <tr>
+      <td class="tableheader">Name</td>
+      <td class="tableheader">Phone</td>
+      <td class="tableheader">Email</td>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td class="listview"><%= link_to "#{user.name}", user_path(user) %></td>
+      <td class="listview"><%= user.phone %></td>
+      <td class="listview"><%= user.email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
