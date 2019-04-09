@@ -5,6 +5,6 @@ module GamesHelper
   end
 
   def game_date(game)
-    game.date.strftime("%-m/%-d/%Y")
+    game.starts_at.strftime("%-m/%-d/%Y")
   end
 end
