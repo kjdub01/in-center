@@ -8,8 +8,8 @@
       <td class="tableheader">Appointment</td>
     </tr>
     <tr>
-      <td class="listview"><%= @game.date %></td>
-      <td class="listview"><%= @game.starts_at %></td>
+      <td class="listview"><%= game_date @game %></td>
+      <td class="listview"><%= game_time @game %></td>
       <td class="listview"><%= link_to "#{@home_team.team_name}", team_path(@home_team) %><br>(venue: <%= @home_team.address1%>)</td>
       <td class="listview"><%= link_to "#{@away_team.team_name}", team_path(@away_team) %></td>
       <td class="listview"><%= link_to "#{@game.user.name}", user_path(@game.user) %></td>
