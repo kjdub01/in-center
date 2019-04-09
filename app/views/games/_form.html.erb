@@ -2,9 +2,7 @@
   <%= f.label :referee %>
   <%= f.collection_select(:user_id, User.all, :id, :name) %><br>
   <%= f.label :starts_at %>
-  <%= time_select(:game, 'starts_at', {:minute_step => 15, :ampm => true}) %><br>
-  <%= f.label :date %>
-  <%= date_select(:game, 'date', order: [:month, :day, :year]) %><br>
+  <%= datetime_select(:game, 'starts_at', order: [:month, :day, :year], :minute_step => 15, :ampm => true) %><br>
 
 
   <%= f.fields_for :games_team do |team| %>
