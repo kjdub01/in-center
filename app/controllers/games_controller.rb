@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only:[:show, :edit, :update]
+  before_action :set_game, only:[:show, :edit, :update, :destroy]
   def index
     if params[:team_id]
       @games = Team.find(params[:team_id]).games
@@ -29,6 +29,12 @@ class GamesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @game.games_team.destroy
+    @game.destroy
+    render 'index'
   end
 
   private

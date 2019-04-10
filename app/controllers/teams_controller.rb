@@ -29,6 +29,8 @@ class TeamsController < ApplicationController
   end
 
   def destroy
+    @team.destroy
+    render 'index'
   end
 
   private

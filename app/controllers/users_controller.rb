@@ -23,6 +23,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    render 'index'
+  end
   private
 
   def set_user
