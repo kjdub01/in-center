@@ -70,10 +70,9 @@ Specs:
 Confirm:
 - [x] The application is pretty DRY
 - [x] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
+- [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
 
 
 - Game, Team create edit destroy
 - User admin, edit destroy
-- striff time date

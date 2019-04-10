@@ -1,21 +1,27 @@
-<table class="tableview">
+<table>
   <tbody>
     <tr>
-      <td class="tableheader">Date</td>
-      <td class="tableheader">Time</td>
-      <td class="tableheader">Home Team</td>
-      <td class="tableheader">Away Team</td>
-      <td class="tableheader">Appointment</td>
-    </tr>
-    <tr>
-      <td class="listview"><%= link_to "#{game_date @game}", game_path(@game) %></td>
-      <td class="listview"><%= game_time @game %></td>
-      <td class="listview"><%= link_to "#{@home_team.team_name}", team_path(@home_team) %><br>(venue: <%= @home_team.address1%>)</td>
-      <td class="listview"><%= link_to "#{@away_team.team_name}", team_path(@away_team) %></td>
-      <td class="listview"><%= link_to "#{@game.user.name}", user_path(@game.user) %></td>
+      <td id="data_area">
+        <table>
+          <tbody>
+            <tr>
+              <td class="viewtitle">Game:</td>
+              <td class="gamedata"><%= link_to "#{game_date @game}", game_path(@game) %> <%= game_time @game %> - <%= game_end @game %></td>
+            </tr>
+            <tr>
+              <td class="viewtitle">Game:</td>
+              <td class="gamedata"><%= link_to "#{@home_team.team_name}", team_path(@home_team) %> vs. <%= link_to "#{@away_team.team_name}", team_path(@away_team) %> </td>
+            </tr>
+            <tr>
+              <td class="viewtitle">Official:</td>
+              <td class="gamedata"><%= link_to "#{@game.user.name}", user_path(@game.user) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
     </tr>
   </tbody>
-</table><br><br>
+</table>
 
 <%= link_to "Edit Game", edit_game_path(@game) %>
 <%= link_to "Delete Game", game_path(@game), method: :delete %>
