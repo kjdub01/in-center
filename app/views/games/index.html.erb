@@ -18,4 +18,10 @@
     <% end %>
   </tbody>
 </table><br><br>
-<%= link_to "New Game", new_game_path %>
+<% if params[:team_id] %>
+  <%= link_to "New Game", new_team_game_path %>
+<% elsif params[:user_id] %>
+  <%= link_to "New Game", new_user_game_path %>
+<% else %>
+  <%= link_to "New Game", new_game_path %>
+<% end %>
