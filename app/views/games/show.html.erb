@@ -15,4 +15,7 @@
       <td class="listview"><%= link_to "#{@game.user.name}", user_path(@game.user) %></td>
     </tr>
   </tbody>
-</table>
+</table><br><br>
+
+<%= link_to "Edit Game", edit_game_path(@game) %>
+<%= link_to "Delete Game", game_path(@game), method: :delete %>
