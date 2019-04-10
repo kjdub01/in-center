@@ -31,6 +31,10 @@
               <td class="viewtitle">Address:</td>
               <td class="viewdata"><%= @team.address1 %><br><%= @team.address2 %><br><%= @team.city %>, <%= @team.state %> <%= @team.zipcode %></td>
             </tr>
+            <tr>
+              <td><%= link_to "Edit Team", edit_team_path(@team) %></td>
+              <td class="viewdata"><%= link_to "Delete Team", team_path(@team), method: :delete %></td>
+            </tr>
           </tbody>
         </table>
       </td>
