@@ -17,6 +17,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless logged_in?
   end
 
+  def require_admin
+    redirect_to user_path(current_user) unless admin
+  end
+  helper_method :require_admin
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
