@@ -26,6 +26,11 @@ class TeamsController < ApplicationController
   end
 
   def update
+    if @team.update(team_params)
+      redirect_to @team
+    else
+      render 'edit'
+    end
   end
 
   def destroy
