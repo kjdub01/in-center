@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:new, :edit, :update, :destroy]
 
   def index
     @teams = Team.all

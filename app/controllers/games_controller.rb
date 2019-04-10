@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
   before_action :set_game, only:[:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:new, :edit, :update, :destroy]
+
   def index
     if params[:team_id]
       @games = Team.find(params[:team_id]).games
@@ -40,7 +42,7 @@ class GamesController < ApplicationController
     else
       render 'edit'
     end
-  end 
+  end
 
   def destroy
     @game.games_team.destroy
