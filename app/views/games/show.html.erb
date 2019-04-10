@@ -22,6 +22,7 @@
     </tr>
   </tbody>
 </table>
-
-<%= link_to "Edit Game", edit_game_path(@game) %>
-<%= link_to "Delete Game", game_path(@game), method: :delete %>
+<% if admin %>
+  <%= link_to "Edit Game", edit_game_path(@game) %>
+  <%= link_to "Delete Game", game_path(@game), method: :delete %>
+<% end %>

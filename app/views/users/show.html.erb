@@ -38,5 +38,7 @@
     </tr>
   </tbody>
 </table>
+<% if admin %>
   <%= link_to "Edit User", edit_user_path(@user) %>
   <%= link_to "Delete User", user_path(@user), method: :delete %>
+<% end %>

@@ -37,5 +37,7 @@
     </tr>
   </tbody>
 </table>
-<%= link_to "Edit Team", edit_team_path(@team) %>
-<%= link_to "Delete Team", team_path(@team), method: :delete %>
+<% if admin %>
+  <%= link_to "Edit Team", edit_team_path(@team) %>
+  <%= link_to "Delete Team", team_path(@team), method: :delete %>
+<% end %>
