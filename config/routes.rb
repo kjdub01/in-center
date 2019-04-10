@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create'
   resources :users do
-    resources :games, only: [:index]
+    resources :games, only: [:index, :show, :new]
   end
   resources :games
   resources :teams do
-    resources :games, only: [:show, :index]
+    resources :games, only: [:show, :index, :new]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
