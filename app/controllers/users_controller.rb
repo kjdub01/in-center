@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:edit, :update, :destroy]
+  before_action :require_admin, only: [:destroy]
 
   def show
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       render 'edit'
     end
