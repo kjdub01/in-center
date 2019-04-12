@@ -1,9 +1,4 @@
-<%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages' %>
-  <div class="signup">
-    <div class="signup-header">
-      <p>Sign Up</p>
-    </div>
+<%= form_for @user do |f| %>
     <table>
       <tbody>
         <tr>
@@ -45,18 +40,21 @@
           <td><%= f.text_field :email, class: "form-control" %></td>
         </tr>
 
+        <% if current_user == @user %>
         <tr>
           <td><%= f.label :password %></td>
           <td><%= f.password_field :password, class: "form-control" %></td>
         </tr>
+        <% end %>
 
+        <% if current_user && admin %>
+          <tr>
+            <td><%= f.label :admin %></td>
+            <td><%= f.check_box :admin, class: "form-control" %></td>
+          </tr>
+        <% end %>
         <tr>
-          <td><%= f.label :admin %></td>
-          <td><%= f.check_box :admin, class: "form-control" %></td>
-        </tr>
-
-        <tr>
-          <td><%= f.submit class: "btn btn-primary" %></td>
+          <td><%= f.submit %></td>
         </tr>
       </tbody>
     </table>
