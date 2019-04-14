@@ -50,6 +50,10 @@ class GamesController < ApplicationController
     redirect_to games_path
   end
 
+  def unassigned
+    @games = Game.all
+  end
+
   private
 
   def set_game
