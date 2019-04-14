@@ -13,7 +13,11 @@
         <td class="listview"><%= game_time game %></td>
         <td class="listview"><%= link_to "#{game.home_team.team_name}", team_path(game.home_team) %><br>(venue: <%= game.home_team.address1%>)</td>
         <td class="listview"><%= link_to "#{game.away_team.team_name}", team_path(game.away_team) %></td>
-        <td class="listview"><%= link_to "#{game.user.name}", user_path(game.user) %></td>
+        <% if game.user %>
+          <td class="listview"><%= link_to "#{game.user.name}", user_path(game.user) %></td>
+        <% else %>
+          <td class="listview"> ? </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
