@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create'
+
   resources :users do
     resources :games, only: [:index, :show, :new]
   end
-  resources :games
+  resources :games do
+    get 'unassigned', on: :collection
+  end
   resources :teams do
     resources :games, only: [:show, :index, :new]
   end
