@@ -47,7 +47,7 @@ class GamesController < ApplicationController
   def destroy
     @game.games_team.destroy
     @game.destroy
-    render 'index'
+    redirect_to games_path
   end
 
   private
