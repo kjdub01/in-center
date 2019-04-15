@@ -27,8 +27,11 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
+      flash[:success] = "Game was successfully created!"
       redirect_to game_path(@game)
     else
+      flash[:error] = @game.errors.full_messages.to_sentence
+      flash[:error] = @game.games_team.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -38,16 +41,23 @@ class GamesController < ApplicationController
 
   def update
     if @game.update(game_params)
+      flash[:success] = "Whew! Glad we got that updated"
       redirect_to @game
     else
+      flash[:error] = @game.errors.full_messages.to_sentence
+      flash[:error] = @game.games_team.errors.full_messages.to_sentence
       render 'edit'
     end
   end
 
   def destroy
-    @game.games_team.destroy
-    @game.destroy
-    redirect_to games_path
+    if @game.destroy
+      flash[:sucess] = "Game deleted"
+      redirect_to games_path
+    else
+      flash[:error] = @game.errors.full_messages.to_sentence
+      redirect_to game_path(@game)
+    end
   end
 
   def unassigned

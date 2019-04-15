@@ -17,9 +17,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      flash[:success] = "Welcome to In Center"
 
       redirect_to user_path(@user)
     else
+      flash[:error] = @user.errors.full_messages
       render 'new'
     end
   end
@@ -29,15 +31,22 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      flash[:success] = "Whew! Glad we updated that."
       redirect_to user_path(@user)
     else
+      flash[:error] = @user.errors.full_messages.to_sentence
       render 'edit'
     end
   end
 
   def destroy
-    @user.destroy
-    render 'index'
+    if @user.destroy
+      flash[:success] = "User was deleted."
+      render 'index'
+    else
+      flash[:error] = @user.errors.full_messages.to_sentence
+      redirect_to user_path(@user)
+    end
   end
   private
 

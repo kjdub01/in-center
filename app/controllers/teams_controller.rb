@@ -17,8 +17,10 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
+      flash[:success] = "Team Successfully Created"
       redirect_to team_path(@team)
     else
+      flash[:error] = @team.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -28,15 +30,22 @@ class TeamsController < ApplicationController
 
   def update
     if @team.update(team_params)
+      flash[:success] = "Whew! Glad we got that updated"
       redirect_to @team
     else
+      flash[:error] = @team.errors.full_messages.to_sentence
       render 'edit'
     end
   end
 
   def destroy
-    @team.destroy
-    render 'index'
+    if @team.destroy
+      render 'index'
+      flash[:success] = "Team was deleted"
+    else
+      flash[:error] = @team.errors.full_messages.to_sentence
+      redirect_to team_path(@team)
+    end
   end
 
   private
