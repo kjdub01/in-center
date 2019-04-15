@@ -37,6 +37,9 @@
       </div> <!-- end menudiv -->
       <!-- content -->
       <div id="maincontent" class="contentarea">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
         <%= yield %>
       </div> <!-- end contentarea-->
     </div> <!-- end container-->
