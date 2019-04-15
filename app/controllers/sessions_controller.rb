@@ -17,8 +17,8 @@ class SessionsController < ApplicationController
 
         redirect_to user_path(@user)
       else
-        flash[:error] = @user.errors.full_messages.to_sentence
-        render "sessions/new"
+        flash[:danger] = "Email or Password is invalid"
+        render 'new'
       end
     end
   end
