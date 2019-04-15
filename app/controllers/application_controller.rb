@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def authorized_to_edit_user
+    unless admin || current_user == @user
+      redirect_to user_path(current_user)
+    end
+  end
+
   def set_timezone
     Time.zone = 'GMT'
   end
