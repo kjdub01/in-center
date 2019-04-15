@@ -33,7 +33,7 @@ gem 'pry'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', ">= 4.3.1"
 gem 'jquery-rails'
 
 # Use ActiveStorage variant
