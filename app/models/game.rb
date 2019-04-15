@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
   belongs_to :user, optional: true
-  has_many :games_team
+  has_many :games_team, :dependent => :destroy
   accepts_nested_attributes_for :games_team
   has_many :teams, through: :games_team
 
