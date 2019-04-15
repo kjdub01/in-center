@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:destroy]
+  before_action :authorized_to_edit_user, only: [:edit]
 
   def show
   end
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
 
       redirect_to user_path(@user)
     else
-      flash[:error] = @user.errors.full_messages
+      flash[:danger] = @user.errors.full_messages
       render 'new'
     end
   end
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
       flash[:success] = "Whew! Glad we updated that."
       redirect_to user_path(@user)
     else
-      flash[:error] = @user.errors.full_messages.to_sentence
+      flash[:danger] = @user.errors.full_messages.to_sentence
       render 'edit'
     end
   end
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
       flash[:success] = "User was deleted."
       render 'index'
     else
-      flash[:error] = @user.errors.full_messages.to_sentence
+      flash[:danger] = @user.errors.full_messages.to_sentence
       redirect_to user_path(@user)
     end
   end
