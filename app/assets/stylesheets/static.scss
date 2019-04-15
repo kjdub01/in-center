@@ -1,3 +1,18 @@
 // Place all the styles related to the Static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.homeheader {
+  padding-left: 50px;
+  text-align: center;
+  font-family: calibri, arial, sans-serif;
+}
+
+.homecontent {
+  display: inline-grid;
+  padding-left: 50px;
+  font-family: calibri, arial, sans-serif;
+}
+
+.homecontent p {
+  text-align: center;
+}
