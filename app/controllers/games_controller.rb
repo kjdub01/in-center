@@ -30,8 +30,8 @@ class GamesController < ApplicationController
       flash[:success] = "Game was successfully created!"
       redirect_to game_path(@game)
     else
-      flash[:error] = @game.errors.full_messages.to_sentence
-      flash[:error] = @game.games_team.errors.full_messages.to_sentence
+      flash[:danger] = @game.errors.full_messages.to_sentence
+      flash[:danger] = @game.games_team.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -44,8 +44,8 @@ class GamesController < ApplicationController
       flash[:success] = "Whew! Glad we got that updated"
       redirect_to @game
     else
-      flash[:error] = @game.errors.full_messages.to_sentence
-      flash[:error] = @game.games_team.errors.full_messages.to_sentence
+      flash[:danger] = @game.errors.full_messages.to_sentence
+      flash[:danger] = @game.games_team.errors.full_messages.to_sentence
       render 'edit'
     end
   end
@@ -55,7 +55,7 @@ class GamesController < ApplicationController
       flash[:sucess] = "Game deleted"
       redirect_to games_path
     else
-      flash[:error] = @game.errors.full_messages.to_sentence
+      flash[:danger] = @game.errors.full_messages.to_sentence
       redirect_to game_path(@game)
     end
   end

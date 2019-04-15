@@ -20,7 +20,7 @@ class TeamsController < ApplicationController
       flash[:success] = "Team Successfully Created"
       redirect_to team_path(@team)
     else
-      flash[:error] = @team.errors.full_messages.to_sentence
+      flash[:danger] = @team.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -33,7 +33,7 @@ class TeamsController < ApplicationController
       flash[:success] = "Whew! Glad we got that updated"
       redirect_to @team
     else
-      flash[:error] = @team.errors.full_messages.to_sentence
+      flash[:danger] = @team.errors.full_messages.to_sentence
       render 'edit'
     end
   end
@@ -43,7 +43,7 @@ class TeamsController < ApplicationController
       render 'index'
       flash[:success] = "Team was deleted"
     else
-      flash[:error] = @team.errors.full_messages.to_sentence
+      flash[:danger] = @team.errors.full_messages.to_sentence
       redirect_to team_path(@team)
     end
   end
