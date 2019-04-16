@@ -7,7 +7,7 @@ class Game < ApplicationRecord
   validates :starts_at, presence: true
 
   scope :unassigned, -> {where(user_id: nil)}
-
+  scope :game_list, -> { order(starts_at: :asc) }
   def home_team
     which_team = self.games_team.where(home_team: true)
     home_team = Team.find(which_team[0][:team_id])

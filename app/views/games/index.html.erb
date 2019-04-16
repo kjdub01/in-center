@@ -7,7 +7,7 @@
       <td class="tableheader">Away Team</td>
       <td class="tableheader">Appointment</td>
     </tr>
-    <% @games.each do |game| %>
+    <% @games.game_list.each do |game| %>
       <tr>
         <% if params[:user_id] %>
           <td class="listview"><%= link_to "#{game_date game}", user_game_path(game.user, game)  %></td>
