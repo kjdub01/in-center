@@ -40,7 +40,7 @@
           <td><%= f.text_field :email, class: "form-control" %></td>
         </tr>
 
-        <% if current_user == @user %>
+        <% if current_user == nil || current_user == @user %>
         <tr>
           <td><%= f.label :password %></td>
           <td><%= f.password_field :password, class: "form-control" %></td>
