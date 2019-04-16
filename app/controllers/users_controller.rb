@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
       redirect_to user_path(@user)
     else
-      flash[:danger] = @user.errors.full_messages
+      flash[:danger] = @user.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def destroy
     if @user.destroy
       flash[:success] = "User was deleted."
-      render 'index'
+      redirect_to users_path
     else
       flash[:danger] = @user.errors.full_messages.to_sentence
       redirect_to user_path(@user)
