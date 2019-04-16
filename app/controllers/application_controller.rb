@@ -28,8 +28,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    flash[:danger] = "You must be an admin to do that."
-    redirect_to user_path(current_user) unless admin
+    unless admin
+      flash[:danger] = "You must be an admin to do that."
+      redirect_to user_path(current_user)
+    end
   end
   helper_method :require_admin
 
