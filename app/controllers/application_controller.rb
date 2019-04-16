@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
   def authorized_to_edit_user
     unless admin || current_user == @user
+      flash[:danger] = "You cannot edit this"
       redirect_to user_path(current_user)
     end
   end
@@ -20,10 +21,14 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to root_path unless logged_in?
+    unless logged_in?
+      flash[:danger] = "Login First"
+      redirect_to login_path
+    end
   end
 
   def require_admin
+    flash[:danger] = "You must be an admin to do that."
     redirect_to user_path(current_user) unless admin
   end
   helper_method :require_admin
