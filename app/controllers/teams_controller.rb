@@ -40,8 +40,8 @@ class TeamsController < ApplicationController
 
   def destroy
     if @team.destroy
-      render 'index'
       flash[:success] = "Team was deleted"
+      redirect_to teams_path
     else
       flash[:danger] = @team.errors.full_messages.to_sentence
       redirect_to team_path(@team)
