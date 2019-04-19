@@ -7,26 +7,7 @@
       <td class="tableheader">Away Team</td>
       <td class="tableheader">Appointment</td>
     </tr>
-    <% @games.game_list.each do |game| %>
-      <tr>
-        <% if params[:user_id] %>
-          <td class="listview"><%= link_to "#{game_date game}", user_game_path(game.user, game)  %></td>
-        <% elsif params[:team_id]%>
-        <% team = Team.find(params[:team_id]) %>
-        <td class="listview"><%= link_to "#{game_date game}", team_game_path(team, game)  %></td>
-        <% else %>
-          <td class="listview"><%= link_to "#{game_date game}", game_path(game)  %></td>
-        <% end %>
-        <td class="listview"><%= game_time game %></td>
-        <td class="listview"><%= link_to "#{game.home_team.team_name}", team_path(game.home_team) %><br>(venue: <%= game.home_team.address1%>)</td>
-        <td class="listview"><%= link_to "#{game.away_team.team_name}", team_path(game.away_team) %></td>
-        <% if game.user %>
-          <td class="listview"><%= link_to "#{game.user.name}", user_path(game.user) %></td>
-        <% else %>
-          <td class="listview"> ? </td>
-        <% end %>
-      </tr>
-    <% end %>
+    <%= render 'tr_for_games' %>
   </tbody>
 </table><br><br>
 <% if admin %>
