@@ -29,7 +29,4 @@
     </tr>
   </tbody>
 </table>
-<% if admin %>
-  <%= link_to "Edit Game", edit_game_path(@game) %>
-  <%= link_to "Delete Game", game_path(@game), method: :delete %>
-<% end %>
+<%= render 'admin_links' %>
