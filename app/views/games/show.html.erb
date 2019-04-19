@@ -12,17 +12,7 @@
               <td class="viewtitle">Game:</td>
               <td class="gamedata"><%= link_to "#{@home_team.team_name}", team_path(@home_team) %> vs. <%= link_to "#{@away_team.team_name}", team_path(@away_team) %> </td>
             </tr>
-            <% if @game.user %>
-              <tr>
-                <td class="viewtitle">Official:</td>
-                <td class="gamedata"><%= link_to "#{@game.user.name}", user_path(@game.user) %></td>
-              </tr>
-            <% else %>
-              <tr>
-                <td class="viewtitle">Official:</td>
-                <td class="gamedata"> ? </td>
-              </tr>
-            <% end %>
+            <%= render 'show_user' %>
           </tbody>
         </table>
       </td>

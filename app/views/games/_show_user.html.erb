@@ -1,0 +1,11 @@
+<% if @game.user %>
+  <tr>
+    <td class="viewtitle">Official:</td>
+    <td class="gamedata"><%= link_to "#{@game.user.name}", user_path(@game.user) %></td>
+  </tr>
+<% else %>
+  <tr>
+    <td class="viewtitle">Official:</td>
+    <td class="gamedata"> ? </td>
+  </tr>
+<% end %>
