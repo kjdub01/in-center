@@ -52,7 +52,7 @@ class GamesController < ApplicationController
 
   def destroy
     if @game.destroy
-      flash[:sucess] = "Game deleted"
+      flash[:success] = "Game deleted"
       redirect_to games_path
     else
       flash[:danger] = @game.errors.full_messages.to_sentence
