@@ -7,16 +7,15 @@ class Game < ApplicationRecord
   validates :starts_at, presence: true
 
   scope :unassigned, -> {where(user_id: nil)}
-  scope :game_list, -> { order(starts_at: :asc) }
+  scope :game_list, -> {order(starts_at: :asc)}
+
   def home_team
     which_team = self.games_team.where(home_team: true)
     home_team = Team.find(which_team[0][:team_id])
-    home_team
   end
 
   def away_team
     which_team = self.games_team.where(home_team: false)
     away_team = Team.find(which_team[0][:team_id])
-    away_team
   end
 end
