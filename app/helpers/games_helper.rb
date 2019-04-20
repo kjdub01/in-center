@@ -12,14 +12,4 @@ module GamesHelper
     end_time = game.starts_at + 80.minutes
     end_time.strftime("%l:%M %P")
   end
-
-  def user
-    params[:user_id]
-  end
-
-  def team
-    if params[:team_id]
-      team = Team.find(params[:team_id])
-    end
-  end
 end

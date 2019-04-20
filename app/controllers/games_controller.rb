@@ -5,10 +5,10 @@ class GamesController < ApplicationController
   def index
     if params[:team_id]
       @games = Team.find(params[:team_id]).games
-
+      @team = Team.find(params[:team_id])
     elsif params[:user_id]
       @games = User.find(params[:user_id]).games
-
+      @user = User.find(params[:user_id])
     else
       @games = Game.all
     end
