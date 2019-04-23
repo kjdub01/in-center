@@ -6,10 +6,10 @@ class Team < ApplicationRecord
   validates :team_name, presence: true
   validates :contact_name, presence: true
   VALID_PHONE_FORMAT = /\A[2-9]\d{2}-\d{3}-\d{4}\z/
-  validates :contact_phone, presence: true, format: {with: VALID_PHONE_FORMAT}
+  validates :contact_phone, presence: true, format: {with: VALID_PHONE_FORMAT, message: "Format XXX-XXX-XXXX"}
   validates :address1, presence: true
   validates :city, presence: true
   validates :state, presence: true
   VALID_ZIPCODE_FORMAT = /\A\d{5}(-\d{4})?\z/
-  validates :zipcode, presence: true, format: {with: VALID_ZIPCODE_FORMAT}
+  validates :zipcode, presence: true, format: {with: VALID_ZIPCODE_FORMAT, message: "Format XXXXX"}
 end
