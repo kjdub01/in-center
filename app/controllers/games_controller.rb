@@ -12,6 +12,11 @@ class GamesController < ApplicationController
     else
       @games = Game.all
     end
+
+    respond_to do |f|
+      f.html
+      f.json {render json: @games}
+    end
   end
 
   def show
