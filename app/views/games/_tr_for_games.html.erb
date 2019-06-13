@@ -3,7 +3,7 @@
     <% if @user %>
       <td class="listview"><%= link_to "#{game_date game}", user_game_path(game.user, game)  %></td>
     <% elsif @team %>
-    <td class="listview"><%= link_to "#{game_date game}", team_game_path(team, game)  %></td>
+    <td class="listview"><%= link_to "#{game_date game}", team_game_path(@team, game)  %></td>
     <% else %>
       <td class="listview"><%= link_to "#{game_date game}", game_path(game)  %></td>
     <% end %>
