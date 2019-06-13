@@ -61,7 +61,7 @@ class GamesController < ApplicationController
   end
 
   def unassigned
-    @games = Game.all
+    @games = Game.unassigned
   end
 
   private
