@@ -8,7 +8,7 @@
             <span><%= link_to "Referee", user_path(@user) %></span>
           </div>
           <div id="tab_div_games">
-            <span><%= link_to "Games", user_games_path(@user) %></span>
+            <span><%= link_to "Games", user_games_path(@user), class: "user/s-games" %></span>
           </div>
           <div class="Username">
             <p><%= @user.name %></p>
