@@ -3,8 +3,22 @@ $(() => {
 })
 
 const bindClickHandlers = () => {
-  $('.user-games').on('click', (e) => {
+  $('.unassigned').on('click', e => {
     e.preventDefault()
-    console.log('hello')
+    fetch('/games/unassigned.json')
+      .then(res => res.json())
+      .then(data => {
+        $('#maincontent').html('')
+        data.forEach(game => {
+          console.log(game)
+        })
+      })
   })
 }
+
+function Game(game) {
+  this.id = game.id
+  this.starts_at = game.starts_at
+  this.teams = game.teams
+  this.user = game.user
+} 
