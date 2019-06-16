@@ -17,6 +17,8 @@ const bindClickHandlers = () => {
         })
       })
   })
+
+  $()
 }
 
 function Game(game) {
@@ -28,7 +30,7 @@ function Game(game) {
 
 Game.prototype.formatIndex = function() {
   let gameHTML = `
-    <h1>${this.user}</h1>
+    <a href="/games/${this.id}" class="show_link"><h1>${this.starts_at}</h1>
   `
   return gameHTML
 }
