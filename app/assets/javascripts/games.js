@@ -6,19 +6,34 @@ const bindClickHandlers = () => {
   $('.unassigned').on('click', e => {
     e.preventDefault()
     history.pushState(null, null, "games/unassigned")
-    fetch('/games/unassigned.json')
-      .then(res => res.json())
-      .then(data => {
-        $('#maincontent').html('')
-        data.forEach(game => {
-          let newGame = new Game(game)
-          let gameHTML = newGame.formatIndex()
-          $('#maincontent').append(gameHTML)
-        })
-      })
+    getGames ()
   })
 
-  $()
+  $(document).on('click', ".show_link", function(e) {
+    e.preventDefault()
+    $('#maincontent').html('')
+    let id = ($(this).attr('data-id'))
+    fetch(`/games/${id}.json`)
+      .then(res => res.json())
+      .then(game => {
+        let newGame = new Game(game)
+        let gameHTML = newGame.formatShow()
+        $('#maincontent').append(gameHTML)
+      })
+  })
+}
+
+const getGames = () => {
+  fetch('/games/unassigned.json')
+    .then(res => res.json())
+    .then(games => {
+      $('#maincontent').html('')
+      games.forEach(game => {
+        let newGame = new Game(game)
+        let gameHTML = newGame.formatIndex()
+        $('#maincontent').append(gameHTML)
+      })
+    })
 }
 
 function Game(game) {
@@ -30,7 +45,14 @@ function Game(game) {
 
 Game.prototype.formatIndex = function() {
   let gameHTML = `
-    <a href="/games/${this.id}" class="show_link"><h1>${this.starts_at}</h1>
+    <a href="/games/${this.id}" data-id="${this.id}" class="show_link"><h1>${this.starts_at}</h1>
+  `
+  return gameHTML
+}
+
+Game.prototype.formatShow = function() {
+  let gameHTML = `
+    <h1>${this.id}</h1>
   `
   return gameHTML
 }
