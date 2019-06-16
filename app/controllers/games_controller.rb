@@ -22,6 +22,10 @@ class GamesController < ApplicationController
   def show
     @home_team = @game.home_team
     @away_team = @game.away_team
+    respond_to do |f|
+      f.html
+      f.json {render json: @game}
+    end
   end
 
   def new
