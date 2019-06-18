@@ -37,7 +37,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     if @game.save
       flash[:success] = "Game was successfully created!"
-      redirect_to game_path(@game)
+      render json: @game
     else
       flash[:danger] = @game.errors.full_messages.to_sentence
       flash[:danger] = @game.games_team.errors.full_messages.to_sentence
