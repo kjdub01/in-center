@@ -21,6 +21,19 @@ const bindClickHandlers = () => {
         $('#maincontent').append(gameHTML)
       })
   })
+
+  $('#new_game').on('submit', function(e) {
+    e.preventDefault()
+
+    const values = $(this).serialize()
+
+    $.post("/games", values).done(function(data) {
+      $('#maincontent').html('')
+      const newGame = new Game(data)
+      const htmlToAdd = newGame.formatShow()
+      $('#maincontent').html(htmlToAdd)
+    })
+  })
 }
 
 const getGames = () => {
