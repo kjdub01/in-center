@@ -71,7 +71,7 @@ class GamesController < ApplicationController
 
   def unassigned
     @games = Game.unassigned
-
+    
     respond_to do |f|
       f.html
       f.json {render json: @games}
