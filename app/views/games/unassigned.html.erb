@@ -9,7 +9,7 @@
     </tr>
     <% @games.each do |game| %>
       <tr>
-        <td class="listview"><%= link_to "#{game_date game}", game_path(game)  %></td>
+        <td class="listview"><%= link_to "#{game_date game}", game_path(game), class: 'show_link'%></td>
         <td class="listview"><%= game_time game %></td>
         <td class="listview"><%= link_to "#{game.home_team.team_name}", team_path(game.home_team) %><br>(venue: <%= game.home_team.address1%>)</td>
         <td class="listview"><%= link_to "#{game.away_team.team_name}", team_path(game.away_team) %></td>
