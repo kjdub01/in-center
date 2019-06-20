@@ -22,20 +22,17 @@ const bindClickHandlers = () => {
       })
   })
 
-  $('#new_game').on('submit', function(e) {
+  $("#new_game.new_game").on("submit", function(e) {
     e.preventDefault()
-
     const values = $(this).serialize()
 
-    $.post("/games", values).done(function(data) {
-      $('#maincontent').html('')
-      let id = ($(this).attr('data-id'))
-      fetch(`/games/${id}.json`)
-        .then(res => res.json())
-        .then(game => {
-          const newGame = new Game(data)
-          const htmlToAdd = newGame.formatShow()
-          $('#maincontent').html(htmlToAdd)
+  $.post("/games", values).done(function(data) {
+    $('#maincontent').html('')
+    //$('#maincontent').html('<h1>This will be the new content</h1>')
+    const newGame = new Game(data)
+    const htmlToAdd = newGame.formatShow()
+
+    $("#maincontent").html(htmlToAdd)
     })
   })
 }
