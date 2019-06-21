@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   before_action :authorized_to_edit_user, only: [:edit]
 
   def show
+    respond_to do |f|
+      f.html
+      f.json {render json: @user}
+    end
   end
 
   def index
