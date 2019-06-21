@@ -11,8 +11,10 @@ const bindClickHandlers = () => {
 
   $(document).on('click', ".show_link", function(e) {
     e.preventDefault()
-    $('#maincontent').html('')
     let id = ($(this).attr('data-id'))
+    history.pushState(null, null, `/${id}`)
+    $('#maincontent').html('')
+    //let id = ($(this).attr('data-id'))
     fetch(`/games/${id}.json`)
       .then(res => res.json())
       .then(game => {
@@ -42,13 +44,13 @@ const bindClickHandlers = () => {
     fetch(`${baseUrl}/games.json`)
       .then(res => res.json())
       .then(games =>  {
-        console.log(games)
-        //$('#data-area').html('')
-        //games.forEach(game => {
-          //let newGame = new Game(game)
-          //let gameHTML = newGame.formatUserIndex()
-          //$('#data-area').append(gameHTML)
-        //})
+        //console.log(games)
+        $('#maincontent').html('')
+        games.forEach(game => {
+          let newGame = new Game(game)
+          let newHTML = newGame.formatUserIndex()
+          $('#maincontent').append(newHTML)
+        })
       })
   })
 }
@@ -68,27 +70,48 @@ const getGames = () => {
 
 function Game(game) {
   this.id = game.id
-  this.starts_at = game.starts_at
-  this.team1 = game.teams[0].team_name
-  this.team2 = game.teams[1].team_name
-  this.venue = game.teams[0].address1
+  this.starts_at = new Date(game.starts_at)
+  this.teams = game.teams
+  //this.team1 = game.teams[0].team_name
+  //this.team2 = game.teams[1].team_name
+  //this.venue = game.teams[0].address1
   this.user = game.user
 }
 
 Game.prototype.formatIndex = function() {
 
   let gameHTML = `
-  <h3>Match</h3>
-    <h4><a href="/games/${this.id}" data-id="${this.id}" class="show_link"><h1>${this.starts_at}</a></h4>
-    <h4>${this.team1} vs. ${this.team2}</h4>
-    <h4>Venue: ${this.venue}</h4>
+  <h3>Unassigned Matches</h3>
+  <table>
+    <tbody>
+      <tr>
+      <td>Date</td>
+      <td>Time</td>
+      <td>Home Team</td>
+      <td>Away Team</td>
+      <td>Appointment</td>
+      </tr>
+      <tr>
+      <td><a href="/games/${this.id}" data-id="${this.id}" class="show_link">${this.starts_at.getMonth()}/${this.starts_at.getDay()}/${this.starts_at.getFullYear()}</td>
+      <td>${this.starts_at.getHours()}:${this.starts_at.getMinutes()}${this.starts_at.getSeconds()}</td>
+      <td>${this.teams[0].team_name}</td>
+      <td>${this.teams[1].team_name}</td>
+      <td>${this.user}</td>
+      </tr>
+    </tbody>
+  </table>
   `
+//  <h4><a href="/games/${this.id}" data-id="${this.id}" class="show_link"><h1>${this.starts_at}</a></h4>
+//  <h4>${this.team1} vs. ${this.team2}</h4>
+  //<h4>Venue: ${this.venue}</h4>
   return gameHTML
 }
 
 Game.prototype.formatShow = function() {
   let gameHTML = `
-    <h1>${this.team1} vs ${this.team2}</h1>
+    <h3>${this.teams[0].team_name} vs ${this.teams[1].team_name}</h3>
+    <h3>Venue: ${this.teams[0].address1}</h3>
+    <h3><a href="${this.id}/edit">Assign Ref</h3>
   `
   return gameHTML
 }
@@ -106,13 +129,14 @@ Game.prototype.formatUserIndex = function() {
         <td>Appointment</td>
       </tr>
       <tr>
-        <td>${this.starts_at}</td>
-        <td>${this.starts_at}</td>
-        <td>${this.team1}</td>
-        <td>${this.team2}</td>
-        <td>${this.user}</td>
+        <td>${this.starts_at.getMonth()}/${this.starts_at.getDay()}/${this.starts_at.getFullYear()}</td>
+        <td>${this.starts_at.getHours()}:${this.starts_at.getMinutes()}${this.starts_at.getSeconds()}</td>
+        <td>${this.teams[0].team_name}<br>${this.teams[0].address1}</td>
+        <td>${this.teams[1].team_name}</td>
+        <td>${this.user.name}</td>
       </tr>
       </tbody>
     </table>
   `
+  return gameHTML
 }
