@@ -35,6 +35,22 @@ const bindClickHandlers = () => {
     $("#maincontent").html(htmlToAdd)
     })
   })
+
+  $(document).on("click", ".user-games", function(e) {
+    e.preventDefault()
+    let baseUrl = window.location
+    fetch(`${baseUrl}/games.json`)
+      .then(res => res.json())
+      .then(games =>  {
+        console.log(games)
+        //$('#data-area').html('')
+        //games.forEach(game => {
+          //let newGame = new Game(game)
+          //let gameHTML = newGame.formatUserIndex()
+          //$('#data-area').append(gameHTML)
+        //})
+      })
+  })
 }
 
 const getGames = () => {
@@ -75,4 +91,28 @@ Game.prototype.formatShow = function() {
     <h1>${this.team1} vs ${this.team2}</h1>
   `
   return gameHTML
+}
+
+Game.prototype.formatUserIndex = function() {
+
+  let gameHTML = `
+    <table>
+      <tbody>
+      <tr>
+        <td>Date</td>
+        <td>Time</td>
+        <td>Home Team</td>
+        <td>Away Team</td>
+        <td>Appointment</td>
+      </tr>
+      <tr>
+        <td>${this.starts_at}</td>
+        <td>${this.starts_at}</td>
+        <td>${this.team1}</td>
+        <td>${this.team2}</td>
+        <td>${this.user}</td>
+      </tr>
+      </tbody>
+    </table>
+  `
 }
