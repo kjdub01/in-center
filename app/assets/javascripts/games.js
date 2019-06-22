@@ -5,23 +5,17 @@ $(() => {
 const bindClickHandlers = () => {
   $(document).on('click', "#unassigned", function(e) {
     e.preventDefault()
-  history.pushState(null, null, "games/unassigned")
-  getGames()
+    history.pushState(null, null, "games/unassigned")
+    getGames()
   })
 
   $(document).on('click', ".show_link", function(e) {
     e.preventDefault()
+
     let id = ($(this).attr('data-id'))
     history.pushState(null, null, `/games/${id}`)
     $('#maincontent').html('')
-    //let id = ($(this).attr('data-id'))
-    fetch(`/games/${id}.json`)
-      .then(res => res.json())
-      .then(game => {
-        let newGame = new Game(game)
-        let gameHTML = newGame.formatShow()
-        $('#maincontent').append(gameHTML)
-      })
+    getGameShow(id)
   })
 
   $("#new_game.new_game").on("submit", function(e) {
@@ -30,7 +24,7 @@ const bindClickHandlers = () => {
 
   $.post("/games", values).done(function(data) {
     $('#maincontent').html('')
-    //$('#maincontent').html('<h1>This will be the new content</h1>')
+
     const newGame = new Game(data)
     const htmlToAdd = newGame.formatShow()
 
@@ -40,19 +34,7 @@ const bindClickHandlers = () => {
 
   $(document).on("click", ".user-games", function(e) {
     e.preventDefault()
-    let baseUrl = window.location
-    fetch(`${baseUrl}/games.json`)
-      .then(res => res.json())
-      .then(games =>  {
-        $('#maincontent').html('')
-        let baseUrl = window.location
-        history.pushState(null, null, `${baseUrl}/games`)
-        games.forEach(game => {
-          let newGame = new Game(game)
-          let newHTML = newGame.formatUserIndex()
-          $('#maincontent').append(newHTML)
-        })
-      })
+    getUserGames()
   })
 }
 
@@ -65,6 +47,31 @@ const getGames = () => {
         let newGame = new Game(game)
         let gameHTML = newGame.formatIndex()
         $('#maincontent').append(gameHTML)
+      })
+    })
+}
+
+const getGameShow = function(id) {
+  fetch(`/games/${id}.json`)
+    .then(res => res.json())
+    .then(game => {
+      let newGame = new Game(game)
+      let gameHTML = newGame.formatShow()
+      $('#maincontent').append(gameHTML)
+    })
+}
+
+const getUserGames = () => {
+  let baseUrl = window.location
+  fetch(`${baseUrl}/games.json`)
+    .then(res => res.json())
+    .then(games =>  {
+      $('#maincontent').html('')
+      history.pushState(null, null, `${baseUrl}/games`)
+      games.forEach(game => {
+        let newGame = new Game(game)
+        let newHTML = newGame.formatUserIndex()
+        $('#maincontent').append(newHTML)
       })
     })
 }
