@@ -12,7 +12,7 @@ const bindClickHandlers = () => {
   $(document).on('click', ".show_link", function(e) {
     e.preventDefault()
     let id = ($(this).attr('data-id'))
-    history.pushState(null, null, `/${id}`)
+    history.pushState(null, null, `/games/${id}`)
     $('#maincontent').html('')
     //let id = ($(this).attr('data-id'))
     fetch(`/games/${id}.json`)
@@ -44,8 +44,9 @@ const bindClickHandlers = () => {
     fetch(`${baseUrl}/games.json`)
       .then(res => res.json())
       .then(games =>  {
-        //console.log(games)
         $('#maincontent').html('')
+        let baseUrl = window.location
+        history.pushState(null, null, `${baseUrl}/games`)
         games.forEach(game => {
           let newGame = new Game(game)
           let newHTML = newGame.formatUserIndex()
