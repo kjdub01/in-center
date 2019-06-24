@@ -21,16 +21,22 @@ const bindClickHandlers = () => {
   $("#new_game.new_game").on("submit", function(e) {
     e.preventDefault()
     const values = $(this).serialize()
+    const posting = $.post("/games", values)
+  //$.post("/games", values).done(function(data) {
+    //$('#maincontent').html('')
+    posting.done(function(data) {
+      const newGame = new Game(data)
+      const htmlToAdd = newGame.formatShow()
 
-  $.post("/games", values).done(function(data) {
-    $('#maincontent').html('')
-
-    const newGame = new Game(data)
-    const htmlToAdd = newGame.formatShow()
-
-    $("#maincontent").html(htmlToAdd)
+      $("#maincontent.contentarea").html(htmlToAdd)
     })
-  })
+
+     //const newGame = new Game(data)
+     //const htmlToAdd = newGame.formatShow()
+
+    //$("#maincontent").append(htmlToAdd)
+    })
+  //})
 
   $(document).on("click", ".user-games", function(e) {
     e.preventDefault()
@@ -100,8 +106,8 @@ Game.prototype.formatIndex = function() {
       <td>Appointment</td>
       </tr>
       <tr>
-      <td><a href="/games/${this.id}" data-id="${this.id}" class="show_link">${this.starts_at.getMonth()}/${this.starts_at.getDay()}/${this.starts_at.getFullYear()}</td>
-      <td>${this.starts_at.getHours()}:${this.starts_at.getMinutes()}${this.starts_at.getSeconds()}</td>
+      <td><a href="/games/${this.id}" data-id="${this.id}" class="show_link">${this.starts_at.toLocaleDateString()}</td>
+      <td>${this.starts_at.toTimeString().slice(0, 5)}</td>
       <td>${this.teams[0].team_name}</td>
       <td>${this.teams[1].team_name}</td>
       <td>${this.user}</td>
@@ -118,8 +124,9 @@ Game.prototype.formatIndex = function() {
 Game.prototype.formatShow = function() {
   let gameHTML = `
     <h3>${this.teams[0].team_name} vs ${this.teams[1].team_name}</h3>
+    <h3>${this.starts_at.toLocaleDateString()} ${this.starts_at.toTimeString().slice(0, 5)}</h3>
     <h3>Venue: ${this.teams[0].address1}</h3>
-    <h3><a href="${this.id}/edit">Assign Ref</h3>
+    <h3><a href="${this.id}/edit">Edit Game</h3>
   `
   return gameHTML
 }
@@ -137,8 +144,8 @@ Game.prototype.formatUserIndex = function() {
         <td>Appointment</td>
       </tr>
       <tr>
-        <td>${this.starts_at.getMonth()}/${this.starts_at.getDay()}/${this.starts_at.getFullYear()}</td>
-        <td>${this.starts_at.getHours()}:${this.starts_at.getMinutes()}${this.starts_at.getSeconds()}</td>
+        <td>${this.starts_at.toLocaleDateString()}</td>
+        <td>${this.starts_at.toTimeString().slice(0, 5)}</td>
         <td>${this.teams[0].team_name}<br>${this.teams[0].address1}</td>
         <td>${this.teams[1].team_name}</td>
         <td>${this.user.name}</td>
