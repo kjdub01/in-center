@@ -14,6 +14,7 @@ Project Specs:
   rendering games/:id from the unassigned games index using JSON response from Active Model Serialization of a Game
 
 [X] Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page.
+    User home page toggles to a list of the user's games rendered using SON response from Active Model Serialization of a Game
 
 [X] Must use your Rails application to render a form for creating a resource that is submitted dynamically through JavaScript.
   submitting the creation of a new Game.
