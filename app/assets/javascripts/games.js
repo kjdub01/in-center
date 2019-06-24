@@ -94,22 +94,21 @@ function Game(game) {
 Game.prototype.formatIndex = function() {
 
   let gameHTML = `
-  <h3>Unassigned Matches</h3>
-  <table>
+  <table class="tableview">
     <tbody>
       <tr>
-      <td>Date</td>
-      <td>Time</td>
-      <td>Home Team</td>
-      <td>Away Team</td>
-      <td>Appointment</td>
+      <td class="tableheader">Date</td>
+      <td class="tableheader">Time</td>
+      <td class="tableheader">Home Team</td>
+      <td class="tableheader">Away Team</td>
+      <td class="tableheader">Appointment</td>
       </tr>
       <tr>
-      <td><a href="/games/${this.id}" data-id="${this.id}" class="show_link">${this.starts_at.toLocaleDateString()}</td>
-      <td>${this.starts_at.toTimeString().slice(0, 5)}</td>
-      <td>${this.teams[0].team_name}</td>
-      <td>${this.teams[1].team_name}</td>
-      <td>${this.user}</td>
+      <td class="listview"><a href="/games/${this.id}" data-id="${this.id}" class="show_link">${this.starts_at.toLocaleDateString()}</td>
+      <td class="listview">${this.starts_at.toTimeString().slice(0, 5)}</td>
+      <td class="listview">${this.teams[0].team_name}</td>
+      <td class="listview">${this.teams[1].team_name}</td>
+      <td class="listview">${this.user}</td>
       </tr>
     </tbody>
   </table>
@@ -119,11 +118,31 @@ Game.prototype.formatIndex = function() {
 
 Game.prototype.formatShow = function() {
   let gameHTML = `
-    <h3>${this.teams[0].team_name} vs ${this.teams[1].team_name}</h3>
-    <h3>${this.starts_at.toLocaleDateString()} ${this.starts_at.toTimeString().slice(0, 5)}</h3>
-    <h3>Venue: ${this.teams[0].address1}</h3>
-    <h3><a href="${this.id}/edit">Edit Game</h3>
+  <table>
+    <tbody>
+      <tr>
+        <td class="viewtitle">Game:</td>
+        <td>${this.starts_at.toLocaleDateString()} ${this.starts_at.toTimeString().slice(0, 5)}</td>
+      </tr>
+      <tr>
+        <td class="viewtitle">Game:</td>
+        <td>${this.teams[0].team_name} vs ${this.teams[1].team_name}</td>
+      </tr>
+      <tr>
+        <td class="viewtitle">Venue:</td>
+        <td>${this.teams[0].address1}</td>
+      </tr>
+      <tr>
+        <td class="viewtitle">Offical:</td>
+        <td>?</td>
+      </tr>
+    </tbody>
+  </table>
+    <a href="${this.id}/edit">Edit Game
   `
+  //<h3>${this.teams[0].team_name} vs ${this.teams[1].team_name}</h3>
+  //<h3>${this.starts_at.toLocaleDateString()} ${this.starts_at.toTimeString().slice(0, 5)}</h3>
+  //<h3>Venue: ${this.teams[0].address1}</h3>
   return gameHTML
 }
 
