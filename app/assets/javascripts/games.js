@@ -23,27 +23,22 @@ const bindClickHandlers = () => {
 
     const values = $(this).serialize()
     const posting = $.post("/games", values)
-  //$.post("/games", values).done(function(data) {
-    //$('#maincontent').html('')
+
     posting.done(function(data) {
       let id = data.id
       history.pushState(null, null, `/games/${id}`)
       const newGame = new Game(data)
       const htmlToAdd = newGame.formatShow()
-      
 
       $("#maincontent").html(htmlToAdd)
     })
+  })
 
-     //const newGame = new Game(data)
-     //const htmlToAdd = newGame.formatShow()
-
-    //$("#maincontent").append(htmlToAdd)
-    })
-  //})
-
-  $(document).on("click", ".user-games", function(e) {
+  $(document).on("click", "#tab_div_games", function(e) {
+    $(this).addClass('gamesClicked').removeAttr('id')
+    $('#tab_div_user').addClass('userUnclicked').removeAttr('id')
     e.preventDefault()
+
     getUserGames()
   })
 }
@@ -76,12 +71,12 @@ const getUserGames = () => {
   fetch(`${baseUrl}/games.json`)
     .then(res => res.json())
     .then(games =>  {
-      $('#maincontent').html('')
+      $('#data_area').html('')
       history.pushState(null, null, `${baseUrl}/games`)
       games.forEach(game => {
         let newGame = new Game(game)
         let newHTML = newGame.formatUserIndex()
-        $('#maincontent').append(newHTML)
+        $('#data_area').append(newHTML)
       })
     })
 }
@@ -119,9 +114,6 @@ Game.prototype.formatIndex = function() {
     </tbody>
   </table>
   `
-//  <h4><a href="/games/${this.id}" data-id="${this.id}" class="show_link"><h1>${this.starts_at}</a></h4>
-//  <h4>${this.team1} vs. ${this.team2}</h4>
-  //<h4>Venue: ${this.venue}</h4>
   return gameHTML
 }
 
