@@ -93,3 +93,52 @@ p {
   color: #000099;
   line-height: .9em;
 }
+
+.gamesClicked {
+  float: left;
+  border-left: 1px ridge gray;
+  border-right: none;
+  border-top: none;
+  padding: 6px;
+  padding-bottom: 0px;
+  margin-left: 0px;
+  background-color: #333435;
+}
+
+.gamesClicked span {
+  font-size: small;
+  font-family: calibri, arial, sans-serif;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.gamesClicked a {
+  text-decoration: none;
+  font-family: calibri, arial, sans-serif;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.userUnclicked {
+  float: left;
+  border-right: none;
+  border-top: none;
+  padding: 6px;
+  padding-bottom: 0px;
+  margin-left: 0px;
+  background-color: #cfd0d1;
+}
+
+.userUnclicked span {
+  font-size: small;
+  font-family: calibri, arial, sans-serif;
+  font-weight: bold;
+  color: #333333;
+}
+
+.userUnclicked a {
+  text-decoration: none;
+  font-family: calibri, arial, sans-serif;
+  font-weight: bold;
+  color: #333333;
+}
