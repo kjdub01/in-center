@@ -18,17 +18,21 @@ const bindClickHandlers = () => {
     getGameShow(id)
   })
 
-  $("#new_game.new_game").on("submit", function(e) {
+  $(document).on("submit", "#new_game.new_game", function(e) {
     e.preventDefault()
+
     const values = $(this).serialize()
     const posting = $.post("/games", values)
   //$.post("/games", values).done(function(data) {
     //$('#maincontent').html('')
     posting.done(function(data) {
+      let id = data.id
+      history.pushState(null, null, `/games/${id}`)
       const newGame = new Game(data)
       const htmlToAdd = newGame.formatShow()
+      
 
-      $("#maincontent.contentarea").html(htmlToAdd)
+      $("#maincontent").html(htmlToAdd)
     })
 
      //const newGame = new Game(data)
