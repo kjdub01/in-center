@@ -41,7 +41,54 @@ const bindClickHandlers = () => {
 
     getUserGames()
   })
+
+  $(document).on('click', ".date-link", function(e) {
+    e.preventDefault()
+    //orderDate()
+    orderHomeTeam()
+
+  })
 }
+
+const orderHomeTeam = () => {
+  fetch('/games/unassigned.json')
+    .then(res => res.json())
+    .then(games => {
+      $('#maincontent').html('')
+      games.sort(function (a, b) {
+        let nameA = a.teams[0].team_name
+        let nameB = b.teams[0].team_name
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        // names must be equal
+        return 0;
+      })
+      games.forEach(game => {
+        let newGame = new Game(game)
+        let gameHTML = newGame.formatIndex()
+        $('#maincontent').append(gameHTML)
+      })
+    })
+  }
+
+const orderDate = () => {
+  fetch('/games/unassigned.json')
+    .then(res => res.json())
+    .then(games => {
+      $('#maincontent').html('')
+      games.sort((a, b) => new Date(a.starts_at) - new Date(b.starts_at))
+      games.forEach(game => {
+        let newGame = new Game(game)
+        let gameHTML = newGame.formatIndex()
+        $('#maincontent').append(gameHTML)
+      })
+    })
+  }
 
 const getGames = () => {
   fetch('/games/unassigned.json')
@@ -112,6 +159,8 @@ Game.prototype.formatIndex = function() {
       </tr>
     </tbody>
   </table>
+
+  <h3><a href="/games/unassigned" class="date-link">Date</a></h3>
   `
   return gameHTML
 }
