@@ -66,8 +66,19 @@ const orderHomeTeam = () => {
         }
 
         // names must be equal
+
+        let nameC = a.teams[1].team_name
+        let nameD = b.teams[1].team_name
+          console.log(nameC)
+        if (nameC < nameD) {
+          return -1;
+        }
+        if (nameC > nameD) {
+          return 1
+        }
         return 0;
       })
+
       games.forEach(game => {
         let newGame = new Game(game)
         let gameHTML = newGame.formatIndex()
