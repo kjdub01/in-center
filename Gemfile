@@ -12,7 +12,7 @@ gem 'eventmachine', '~> 1.2', '>= 1.2.7'
 gem 'thin', '~> 1.8', '>= 1.8.1'
 
 # Use Puma as the app server
-gem 'puma', '~> 5.3', '>= 5.3.2'
+gem 'puma', '~> 5.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
